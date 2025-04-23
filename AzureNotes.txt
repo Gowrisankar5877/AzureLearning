@@ -1,0 +1,83 @@
+					Azure
+21-04-2025
+
+Devops is a combination of tools, practices, cultural philosophy that helps in delivering high quality software faster and more quality through automation and collaboration.
+
+Gate Management in Devops: It acts as a control checkpoint. It has a gate where it checks whether the process can be moved to further stage or not.
+
+
+Different Cloud Service Models
+
+IaaS ( Infrastructure as a Service): It is a model where complete infrastructure is provided by the cloud provider such as virtual machines, storage, networks
+
+Advantages:
+Complete Control
+Access to any type of cloud resource
+Pay as you go
+Scalability
+Elastic IP: Assigned fixed public IP to a resource
+Self service provisioning: It defines defining resources on our own 
+
+Different ways to access and create resources in Azure:
+
+i) Azure ARM Template
+ii) Azure Bicep
+iii) Azure Portal
+iv) Terraform
+
+Categories of Cloud:
+	Public: Shared all over the world
+	Private: Shared across a organization or a group
+	Hybrid: Mix of Public and Private clouds
+
+
+PaaS ( Platform as a Service ): It provides a platform to deploy and develop the applications. You can consider all NFRs can come under the PaaS.
+Advantages:
+	Scalability
+	Deployment & Control
+	Ownership & control
+	Data & Application Responsibility
+	
+SaaS ( Software as a Service ): It provides software applications to ready use
+Advantages of SaaS:
+	Web based access
+	Multi tenant architecture
+	Accessibility from anywhere
+	Lower upfront cost
+	Scalability
+	Flexibility
+	Accessibility
+	Usability
+
+22/04/2025
+
+Strategy- long term
+Tactics - Short term steps taken to solve Non Functional Requirements
+
+Bastian Host:  Acts as a controlled intermediary that administrators or users can use to access internal virtual machines (VMs) without exposing those VMs directly to the internet.
+
+Zone: Independent Data center in a region
+Vnet: It is a network that spans across a region. Vnet is specific to account. Its scope is across region. We can add multiple subnets and their range while creating Vnet. 
+In Azure 
+	1st IP address is reserved for Network Address
+	2nd IP address is reserved for Azure Internal Use that is for to manage the Azure infrastructure of Vnet and its resources.
+	3rd IP address is also reserved for Azure's internal use. This address is often used for the VNet gateway or other Azure services that require a dedicated IP for management and routing purposes.
+V net peering: It allows to pair the two regions and one machine from one region can talk to another machine in another region through private address.
+Scaleset Service: Autoscale the number of vms. We need to create load balancer infront of a scale set.
+Fault Domain: Distribute VMs across multiple fault domains
+Azure Files: It is a managed file share service in the cloud that uses the standard Server Message Block (SMB) protocol. It allows multiple clients to mount and share files concurrently.
+
+
+23-04-2025
+
+Resource group: In azure resource group is a container that holds related resources for azure solution. It is logically grouping of resources that allows to manage and organize them collectively.
+
+Azure Subscription is a logical container used to provision resources in Azure. It is associated with a specific Azure account and is used to manage billing and access to Azure services.
+
+Network Security Group (NSG) is a set of security rules that allow or deny inbound and outbound network traffic to Azure resources.
+
+Rules: Each NSG can contain multiple rules, and rules are processed in priority order. The first rule that matches the traffic will apply.
+Association: NSGs can be associated with subnets or individual network interfaces, allowing for granular control over traffic
+
+
+Vnet is created with 3 subnets such as frontend, backend, private with private as private that is by default outbound access is blocked. After that Network security groups were created such as public and private. The public NSG subnet is associated with frontend and backend where as private NSG subnet is associated with private. The virtual machines are created with frontend,backend,private with no public IP to the backend. Then in NSGs the private Inbound rules  is changed with the only backend VM can access.
