@@ -1,4 +1,3 @@
-					Azure
 21-04-2025
 
 Devops is a combination of tools, practices, cultural philosophy that helps in delivering high quality software faster and more quality through automation and collaboration.
@@ -81,3 +80,62 @@ Association: NSGs can be associated with subnets or individual network interface
 
 
 Vnet is created with 3 subnets such as frontend, backend, private with private as private that is by default outbound access is blocked. After that Network security groups were created such as public and private. The public NSG subnet is associated with frontend and backend where as private NSG subnet is associated with private. The virtual machines are created with frontend,backend,private with no public IP to the backend. Then in NSGs the private Inbound rules  is changed with the only backend VM can access.
+
+
+24-04-2025
+
+Azure Global Infrastructure:
+
+Geography
+Region
+Availability Zones
+Region pairs: two regions within the same geography with atleast 300 miles apart
+Edge locations: are datacenters or facilities providing Azure services closer to end-users (outside the Azure regional network).
+Used by Azure CDN and Azure Front Door for caching and traffic acceleration.
+Reduces latency and improves performance for end-users globally.
+Cloud CDN ( Content Delivery Network ): global distributed network of servers that cache and deliver web content, video, and files at high speed.
+ARM ( Azure Resource Manager ):  is the deployment and management service for Azure resources 
+
+Account: An Azure Account is tied to an email address and is used to sign in and manage Azure subscriptions and resources.
+Grants  billing and/or administrative access.
+
+
+
+Entra ID: User entry in the azure database
+	Refers to a user object in Microsoft Entra ID (formerly Azure Active Directory).
+Represents a single person, device, or service that can authenticate against Azure resources.
+
+Tenant: An Azure Tenant is a dedicated, isolated instance of Microsoft Entra ID (Azure AD).
+Provides identity and access management for users, groups, and applications.
+Each tenant is unique and associated with a single organization.
+TenantID
+Management Groups: are containers for managing access, policy, and compliance across multiple Azure subscriptions.
+
+Hierarchy:
+Microsoft Entra ID (Tenant)
+    └── Management Groups (optional, hierarchical)
+          └── Subscriptions
+                └── Resource Groups
+                      └── Resources
+
+Vnets creation and Vnet peering through Azure CLI:
+So that the machines in different Vnets can talk with each other using private address so that it
+can communicate using azure internet capabilities which decreases latency.
+
+az network vnet create --resource-group gowriRG --name gowriVnet1 --address-prefixes 10.23.0.0/16 
+
+az network vnet create --resource-group gowriRG --name gowriVnet1 --address-prefixes 10.24.0.0/16
+
+az network vnet subnet create --resource-group gowriRG --vnet-name gowriVnet1  --name gowrisubnetV1 --address-prefix 10.23.0.0/24
+
+az network vnet subnet create --resource-group gowriRG --vnet-name gowriVnet2  --name gowrisubnetV2 --address-prefix 10.24.0.0/24
+
+az vm create  --resource-group gowriRG  --name gowriVnet1 --location eastus  --image "Ubuntu2204" --size Standard_B1s --vnet-name gowriVnet1  --subnet gowrisubnetV1  --admin-username gowri --admin-password PassConsole@azure1
+
+az vm create  --resource-group gowriRG  --name gowriVnet2 --location eastus  --image "Ubuntu2204" --size Standard_B1s --vnet-name gowriVnet2  --subnet gowrisubnetV2  --admin-username gowri --admin-password PassConsole@azure1
+
+az network vnet peering create --name gowrivnetpeering --resource-group gowriRG --vnet-name gowriVnet1 --remote-vnet gowriVnet2 --allow-vnet-access
+
+az network vnet peering create  --name VNet1-to-VNet2 --resource-group gowriRG --vnet-name gowriVnet1 --remote-vnet gowriVnet2 --allow-vnet-access
+
+az network vnet peering create  --name VNet2-to-VNet1 --resource-group gowriRG --vnet-name gowriVnet2 --remote-vnet gowriVnet1 --allow-vnet-access
