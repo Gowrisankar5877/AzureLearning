@@ -190,3 +190,29 @@ get-AzVM
 we create a VM and set the OS disk and NIC to be deleted when we delete the VM.
 
 New-AzVm -ResourceGroupName "myResourceGroup" -Name "myVM" -OSDiskDeleteOption Delete -NetworkInterfaceDeleteOption Delete -Location "East US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"
+
+
+
+26-04-2025
+
+Managed Identities
+	Managed Identities provide an automatically managed identity in Azure Active Directory (AAD) for Azure resources.
+	Allows resources to authenticate to services that support AAD authentication without storing credentials in code.
+	Two types: System-assigned (tied to the lifecycle of the resource) and User-assigned (standalone identity that can be assigned to multiple resources).
+Automation Account
+	An Azure Automation Account is a container for automation resources, including runbooks, schedules, and assets.
+	It provides a way to automate frequent tasks, such as deployment, monitoring, and management of Azure resources.
+	Supports process automation, configuration management, and update management.
+Runbook
+	A Runbook is a script or workflow hosted in an Automation Account to automate tasks.
+	Can be authored in PowerShell, PowerShell Workflow, Python, or graphical.
+	Runbooks can be triggered manually, on a schedule, or by webhooks to perform operations like starting/stopping VMs, managing resources, etc.
+Jobs (in Automation)
+	A Job is the execution instance of a runbook. Tracks the status, output, and error messages of a runbook execution. 	Multiple jobs can run concurrently depending on the Automation Account configuration.
+Azure Functions
+	Azure Functions is a serverless compute service that lets you run event-driven code without managing infrastructure. 	Supports multiple languages such as C#, JavaScript, Python, and more. Automatically scales based on demand and you only pay for execution time.
+
+Function App
+	A Function App is the hosting container for one or more Azure Functions.
+	Provides a way to group related functions, share configuration, and manage deployment.
+	Manages resources like storage, runtime version, and scaling for the contained functions.
