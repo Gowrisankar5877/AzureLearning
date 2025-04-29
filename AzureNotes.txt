@@ -216,3 +216,33 @@ Function App
 	A Function App is the hosting container for one or more Azure Functions.
 	Provides a way to group related functions, share configuration, and manage deployment.
 	Manages resources like storage, runtime version, and scaling for the contained functions.
+
+
+28-04-2025
+
+Terraform:
+
+Infrastructure as Code (IaC):
+Different categories of IAC:
+1.  Infrastructure provisioning tools – terraform (multi cloud) , Boto3,  cloud formation, Azure Bicep, Azure ARM Template,
+	The above are used to create or provide infrastructure. We can also modify the infrastructure. If we are modifying then again the services are recreated rather than updating the existing one, so it is called the Provisioning tool.
+2.   Configuration management tool – Ansible, puppet, chef
+	These tools are used for modifying the infrastructure configurations.
+Configuration drift/ snowflakes
+      		Ansible works on push and pull model.
+      		In the pull model you should install agents.
+      		Push model is suggested.
+3.  Server Templating tool – vagrant, docker.
+It helps to create a servers 
+AgroCD/ FluxCD : 
+	Automate continuous delivery of infrastructure and code using Git as the source of truth. These are not classic
+provisioning or configuration tools but fit into declarative and automated infrastructure workflows by keeping
+environments synchronized with code repositories.
+
+Terraform 
+
+	Database execution plan
+	tf Files: You define desired resources and configurations in .tf files.
+	Terraform Plan: This command checks changes between the current state and the desired state 
+	Terraform Apply: This command applies the plan and modifies the infrastructure as defined.
+	State File: Terraform keeps track of the resources it manages in a state file, which must be managed carefully 
