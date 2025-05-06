@@ -246,3 +246,68 @@ Terraform
 	Terraform Plan: This command checks changes between the current state and the desired state 
 	Terraform Apply: This command applies the plan and modifies the infrastructure as defined.
 	State File: Terraform keeps track of the resources it manages in a state file, which must be managed carefully 
+
+
+
+03-05-2025
+
+Creating a Virtual Machine ScaleSet using Azure Portal
+Steps to Create a VMSS
+Create a VM:
+	Install a Single Page Application (SPA) like Apache on it.
+Capture an Image:
+	Once the VM is running and configured, capture its image.
+	Delete the original VM after capturing the image.
+Create a VMSS:
+	Navigate to VM Scale Set in Azure Portal.
+	Select the appropriate resource group, location, and the previously saved image.
+Configure Networking:
+	Use the existing VNET (created with the original VM).
+	Edit the VNET to create two subnets: one public and one private.
+	Add the private subnet to the network interface.
+Configure Load Balancer:
+	Create a Load Balancer.
+	Retain the default configuration:
+Frontend IP: Public IP
+Frontend port: 80
+Backend pool:  VMSS pool
+Backend port: 80
+Probe: Linked to  health probe
+Key Load Balancer Configuration
+Frontend IP: Public IP
+Frontend port: 80
+Backend pool: VMSS pool
+Backend port: 80
+Probe: Health probe for monitoring instance health
+The public IP address of the Load Balancer is used to access your application.
+
+05-05-2025
+
+Creating a Virtual Machine ScaleSet using Terraform. The same above done using the terraform.
+
+Queues
+	Azure Queue Storage provides cloud messaging between application components.
+
+Key Features
+	Simple REST-based interface.
+	Reliable message delivery.
+	Message size up to 64KB.
+	Accessible from anywhere via HTTP/HTTPS.
+Key Characteristics
+	At-least-once delivery.
+	FIFO-like message retrieval (not strictly guaranteed).
+
+Tables
+	Azure Table Storage is a NoSQL key-attribute store for structured, non-relational data.
+
+Key Features
+	Schema-less design.
+	Massive scalability.
+	Low-cost storage.
+	Simple key-based access patterns.
+Key Characteristics
+	Partition key + Row key combination for unique record identification.
+	Auto-indexing on partition and row keys.
+	Simple CRUD operations.
+
+Azure Logic Apps is a cloud-based workflow automation and integration platform that allows you to create and run automated workflows, integrating various applications, services, and systems.
