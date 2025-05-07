@@ -311,3 +311,23 @@ Key Characteristics
 	Simple CRUD operations.
 
 Azure Logic Apps is a cloud-based workflow automation and integration platform that allows you to create and run automated workflows, integrating various applications, services, and systems.
+
+
+06-05-2025
+
+Types of variables in Azure
+	Local: These are variables used within scripts or templates that exist only within the scope they are declared. 
+		   They are temporal and not accessible outside of that scope.
+	Variable: They can store configuration settings or operational data that can be reused.
+	Output: Output variables are specifically used to pass information from one part of a script or template to another, particularly in ARM templates or DevOps pipelines.
+	
+Types of datatypes in variables in azure:
+	String
+	Boolean
+	Integer
+	Array
+	Object
+	
+Azure Repos
+	Git: Distributed Version Control
+	Team Foundation Version Control : Centralized version control
