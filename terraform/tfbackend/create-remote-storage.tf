@@ -22,8 +22,13 @@ resource "azurerm_resource_group" "tfstate" {
   location = "East US"
 }
 
+resource "azurerm_resource_group" "tfstate3" {
+  name     = "gowrisampletfstate1"
+  location = "East US"
+}
+
 resource "azurerm_storage_account" "tfstate" {
-  name                     = "gowritfstate${random_string.resource_code.result}"
+  name                     = "gowritfstate4q9gh"
   resource_group_name      = azurerm_resource_group.tfstate.name
   location                 = azurerm_resource_group.tfstate.location
   account_tier             = "Standard"
